@@ -10,8 +10,9 @@ import (
 )
 
 var Ctx = context.Background()
-
 var Client *mongo.Client
+
+var Accounts *mongo.Collection
 
 func InitDB() (err error) {
 	Client, err = mongo.Connect(
@@ -22,6 +23,8 @@ func InitDB() (err error) {
 	if err != nil {
 		return
 	}
+
+	Accounts = GetCollection("accounts")
 
 	fmt.Println("Connected to MongoDB")
 	return nil
