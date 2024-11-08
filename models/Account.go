@@ -36,7 +36,7 @@ func (acc *Account) ParseToken(token string) (err error) {
 	verified := sj.Verify(token, env.JWT_KEY)
 
 	if !verified {
-		errors.New("Could not return error")
+		return errors.New("Could not verify token")
 	}
 
 	claims, _ := sj.Parse(token)
@@ -81,18 +81,15 @@ func AccountMiddleware(c fiber.Ctx) error {
 	return c.Next()
 }
 
-func (acc *Account) Get(id string) (err error) {
-	err = db.Accounts.FindOne(db.Ctx, bson.M{
+func (acc *Account) Get(id string) error {
+	return db.Accounts.FindOne(db.Ctx, bson.M{
 		"id": id,
 	}).Decode(&acc)
 
-	return
 }
 
-func (acc *Account) GetByPhone(phone string) (err error) {
-	err = db.Accounts.FindOne(db.Ctx, bson.M{
+func (acc *Account) GetByPhone(phone string) error {
+	return db.Accounts.FindOne(db.Ctx, bson.M{
 		"phone": phone,
 	}).Decode(&acc)
-
-	return
 }
