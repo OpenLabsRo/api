@@ -77,8 +77,8 @@ func Endpoints(app *fiber.App) {
 		id := c.Query("id")
 
 		var body struct {
-			casefile.Address `json:"address"`
-			AddressDetails   string `json:"addressDetails"`
+			Address        string `json:"address"`
+			AddressDetails string `json:"addressDetails"`
 		}
 		json.Unmarshal(c.Body(), &body)
 

@@ -16,6 +16,8 @@ type Case struct {
 
 	Patient CasePatient `bson:"patient" json:"patient"`
 
+	PrimaryEvaluation PrimaryEvaluation `bson:"primaryEvaluation" json:"primaryEvaluation"`
+
 	TeamID string `bson:"teamID" json:"teamID"`
 
 	HospitalID string `bson:"hospitalID" json:"hospitalID"`

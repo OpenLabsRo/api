@@ -75,8 +75,8 @@ type CaseIntervention struct {
 
 	EmergencyCode CaseEmergencyCode `bson:"emergencyCode" json:"emergencyCode"`
 
-	Address        Address `bson:"address" json:"address"`
-	AddressDetails string  `bson:"addressDetails" json:"addressDetails"`
+	Address        string `bson:"address" json:"address"`
+	AddressDetails string `bson:"addressDetails" json:"addressDetails"`
 
 	Hazards string `bson:"hazards" json:"hazards"`
 	Assets  string `bson:"assets" json:"assets"`
@@ -144,7 +144,7 @@ func (c *Case) SetInterventionReason(reason string) (err error) {
 	return
 }
 
-func (c *Case) SetInterventionAddress(address Address, addressDetails string) (err error) {
+func (c *Case) SetInterventionAddress(address string, addressDetails string) (err error) {
 	_, err = db.Cases.UpdateOne(db.Ctx, bson.M{
 		"id": c.ID,
 	}, bson.M{
