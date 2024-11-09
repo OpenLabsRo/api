@@ -63,5 +63,6 @@ func Endpoints(app *fiber.App) {
 		return c.JSON(body)
 	}, models.ParamedicMiddleware)
 
-	PrimaryEvaluation(para)
+	primaryEvaluation(para)
+	secondaryEvaluation(para)
 }

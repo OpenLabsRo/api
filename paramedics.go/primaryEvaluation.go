@@ -9,7 +9,7 @@ import (
 	"github.com/gofiber/fiber/v3"
 )
 
-func PrimaryEvaluation(para fiber.Router) {
+func primaryEvaluation(para fiber.Router) {
 	primary := para.Group("/primary")
 
 	primary.Post("/mental", func(c fiber.Ctx) error {
