@@ -53,13 +53,13 @@ type ProcedureMedication struct {
 }
 
 type Procedures struct {
-	Intubation    ProcedureIntubation   `bson:"intubation" json:"intubation"`
-	Ventilation   ProcedureVentilation  `bson:"ventilation" json:"ventilation"`
-	Intravenous   ProcedureIntravenous  `bson:"intravenous" json:"intravenous"`
-	Intraosseuous ProcedureIntraosseous `bson:"intraosseous" json:"intraosseus"`
-	Trauma        ProcedureTrauma       `bson:"trauma" json:"trauma"`
-	Hemostasis    ProcedureHemostasis   `bson:"hemostasis" json:"hemostasis"`
-	Medications   []ProcedureMedication `bson:"medications" json:"medications"`
+	Intubation   ProcedureIntubation   `bson:"intubation" json:"intubation"`
+	Ventilation  ProcedureVentilation  `bson:"ventilation" json:"ventilation"`
+	Intravenous  ProcedureIntravenous  `bson:"intravenous" json:"intravenous"`
+	Intraosseous ProcedureIntraosseous `bson:"intraosseous" json:"intraosseus"`
+	Trauma       ProcedureTrauma       `bson:"trauma" json:"trauma"`
+	Hemostasis   ProcedureHemostasis   `bson:"hemostasis" json:"hemostasis"`
+	Medications  []ProcedureMedication `bson:"medications" json:"medications"`
 }
 
 func (c *Case) SetProceduresIntubation(intubation ProcedureIntubation) (err error) {
@@ -129,7 +129,7 @@ func (c *Case) SetProceduresIntraosseous(intraosseous ProcedureIntraosseous) (er
 		return
 	}
 
-	c.Procedures.Intraosseuous = intraosseous
+	c.Procedures.Intraosseous = intraosseous
 
 	return
 }
