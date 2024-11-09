@@ -23,6 +23,8 @@ var Ambulances *mongo.Collection
 
 var Hospitals *mongo.Collection
 
+var Events *mongo.Collection
+
 func InitDB() (err error) {
 	Client, err = mongo.Connect(
 		Ctx,
@@ -43,6 +45,8 @@ func InitDB() (err error) {
 	Ambulances = GetCollection("ambulances")
 
 	Hospitals = GetCollection("hospitals")
+
+	Events = GetCollection("events")
 
 	fmt.Println("Connected to MongoDB")
 	return nil

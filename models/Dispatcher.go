@@ -69,6 +69,7 @@ func DispatcherMiddleware(c fiber.Ctx) error {
 		}
 
 		c.Locals("id", dt.ID)
+		c.Locals("dispatcherID", dt.DispatcherID)
 		utils.SetLocals(c, "dispatcher", dt)
 	}
 

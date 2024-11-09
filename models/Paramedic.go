@@ -73,7 +73,7 @@ func ParamedicMiddleware(c fiber.Ctx) error {
 		}
 
 		c.Locals("id", pt.ID)
-		utils.SetLocals(c, "dispatcher", pt)
+		utils.SetLocals(c, "paramedic", pt)
 	}
 
 	if token == "" {

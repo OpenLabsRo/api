@@ -15,7 +15,7 @@ type Ambulance struct {
 	Lng       float64 `bson:"lng" json:"lng"`
 }
 
-func UpdateAmbulancePost(ambulanceID string, lat float64, lng float64) error {
+func UpdateAmbulancePos(ambulanceID string, lat float64, lng float64) error {
 	_, err := db.Ambulances.UpdateOne(db.Ctx, bson.M{
 		"id": ambulanceID,
 	}, bson.M{
