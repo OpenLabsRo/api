@@ -1,7 +1,8 @@
 package main
 
 import (
-	"api/db"
+	"api/accounts"
+	"api/dispatchers"
 
 	"github.com/gofiber/fiber/v3"
 )
@@ -9,11 +10,14 @@ import (
 func main() {
 	app := fiber.New()
 
-	db.InitDB()
+	// db.InitDB()
 
 	app.Get("/ping", func(c fiber.Ctx) error {
 		return c.SendString("PONG\n")
 	})
+
+	accounts.Endpoints(app)
+	dispatchers.Endpoints(app)
 
 	app.Listen(":6666")
 }
