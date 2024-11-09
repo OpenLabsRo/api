@@ -52,7 +52,7 @@ func Endpoints(app *fiber.App) {
 		}
 
 		return c.JSON(caseFile)
-	})
+	}, models.DispatcherMiddleware)
 
 	dis.Patch("/case/intervention/reason", func(c fiber.Ctx) error {
 		id := c.Query("id")
@@ -71,7 +71,7 @@ func Endpoints(app *fiber.App) {
 		}
 
 		return c.JSON(body)
-	})
+	}, models.DispatcherMiddleware)
 
 	dis.Patch("/case/intervention/address", func(c fiber.Ctx) error {
 		id := c.Query("id")
@@ -91,9 +91,9 @@ func Endpoints(app *fiber.App) {
 		}
 
 		return c.JSON(body)
-	})
+	}, models.DispatcherMiddleware)
 
-	dis.Patch("/case/intervention/code", func(c fiber.Ctx) error {
+	dis.Patch("/case/intervention/emergency-code", func(c fiber.Ctx) error {
 		id := c.Query("id")
 
 		var body struct {
@@ -110,7 +110,45 @@ func Endpoints(app *fiber.App) {
 		}
 
 		return c.JSON(body)
-	})
+	}, models.DispatcherMiddleware)
+
+	dis.Patch("/case/intervention/case-code", func(c fiber.Ctx) error {
+		id := c.Query("id")
+
+		var body struct {
+			CaseCode string `json:"caseCode"`
+		}
+		json.Unmarshal(c.Body(), &body)
+
+		var caseFile casefile.Case
+		caseFile.ID = id
+
+		err := caseFile.SetInterventionCaseCode(body.CaseCode)
+		if err != nil {
+			return utils.Error(c, err)
+		}
+
+		return c.JSON(body)
+	}, models.DispatcherMiddleware)
+
+	dis.Patch("/case/intervention/activation-protocol", func(c fiber.Ctx) error {
+		id := c.Query("id")
+
+		var body struct {
+			ActivationProtocol string `json:"activationProtocol"`
+		}
+		json.Unmarshal(c.Body(), &body)
+
+		var caseFile casefile.Case
+		caseFile.ID = id
+
+		err := caseFile.SetInterventionActivationProtocol(body.ActivationProtocol)
+		if err != nil {
+			return utils.Error(c, err)
+		}
+
+		return c.JSON(body)
+	}, models.DispatcherMiddleware)
 
 	dis.Patch("/case/intervention/caller", func(c fiber.Ctx) error {
 		id := c.Query("id")
@@ -130,7 +168,7 @@ func Endpoints(app *fiber.App) {
 		}
 
 		return c.JSON(body)
-	})
+	}, models.DispatcherMiddleware)
 
 	dis.Patch("/case/intervention/solicitant", func(c fiber.Ctx) error {
 		id := c.Query("id")
@@ -149,5 +187,43 @@ func Endpoints(app *fiber.App) {
 		}
 
 		return c.JSON(body)
-	})
+	}, models.DispatcherMiddleware)
+
+	dis.Patch("/case/intervention/assets", func(c fiber.Ctx) error {
+		id := c.Query("id")
+
+		var body struct {
+			Assets string `json:"assets"`
+		}
+		json.Unmarshal(c.Body(), &body)
+
+		var caseFile casefile.Case
+		caseFile.ID = id
+
+		err := caseFile.SetInterventionAssets(body.Assets)
+		if err != nil {
+			return utils.Error(c, err)
+		}
+
+		return c.JSON(body)
+	}, models.DispatcherMiddleware)
+
+	dis.Patch("/case/intervention/hazards", func(c fiber.Ctx) error {
+		id := c.Query("id")
+
+		var body struct {
+			Hazards string `json:"hazards"`
+		}
+		json.Unmarshal(c.Body(), &body)
+
+		var caseFile casefile.Case
+		caseFile.ID = id
+
+		err := caseFile.SetInterventionAssets(body.Hazards)
+		if err != nil {
+			return utils.Error(c, err)
+		}
+
+		return c.JSON(body)
+	}, models.DispatcherMiddleware)
 }
