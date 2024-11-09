@@ -15,7 +15,13 @@ var Client *mongo.Client
 var Accounts *mongo.Collection
 var Dispatchers *mongo.Collection
 var Paramedics *mongo.Collection
+
 var Cases *mongo.Collection
+
+var Teams *mongo.Collection
+var Ambulances *mongo.Collection
+
+var Hospitals *mongo.Collection
 
 func InitDB() (err error) {
 	Client, err = mongo.Connect(
@@ -30,7 +36,13 @@ func InitDB() (err error) {
 	Accounts = GetCollection("accounts")
 	Dispatchers = GetCollection("dispatchers")
 	Paramedics = GetCollection("paramedics")
+
 	Cases = GetCollection("cases")
+
+	Teams = GetCollection("teams")
+	Ambulances = GetCollection("ambulances")
+
+	Hospitals = GetCollection("hospitals")
 
 	fmt.Println("Connected to MongoDB")
 	return nil

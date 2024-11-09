@@ -24,7 +24,6 @@ const (
 	RedCode CaseEmergencyCode = iota
 	YellowCode
 	GreenCode
-	OtherCode
 )
 
 type CaseIntervention struct {
