@@ -3,6 +3,7 @@ package main
 import (
 	"api/accounts"
 	"api/dispatchers"
+	"api/paramedics.go"
 
 	"github.com/gofiber/fiber/v3"
 )
@@ -18,6 +19,7 @@ func main() {
 
 	accounts.Endpoints(app)
 	dispatchers.Endpoints(app)
+	paramedics.Endpoints(app)
 
 	app.Listen(":6666")
 }
