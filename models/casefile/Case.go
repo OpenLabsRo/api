@@ -19,6 +19,8 @@ type Case struct {
 	PrimaryEvaluation   PrimaryEvaluation   `bson:"primaryEvaluation" json:"primaryEvaluation"`
 	SecondaryEvaluation SecondaryEvaluation `bson:"secondaryEvaluation" json:"secondaryEvaluation"`
 
+	Procedures Procedures `bson:"procedures" json:"procedures"`
+
 	TeamID string `bson:"teamID" json:"teamID"`
 
 	HospitalID string `bson:"hospitalID" json:"hospitalID"`
