@@ -35,23 +35,23 @@ func InitDB() (err error) {
 		return
 	}
 
-	Accounts = GetCollection("accounts")
-	Dispatchers = GetCollection("dispatchers")
-	Paramedics = GetCollection("paramedics")
+	Accounts = GetCollection("accounts", Client)
+	Dispatchers = GetCollection("dispatchers", Client)
+	Paramedics = GetCollection("paramedics", Client)
 
-	Cases = GetCollection("cases")
+	Cases = GetCollection("cases", Client)
 
-	Teams = GetCollection("teams")
-	Ambulances = GetCollection("ambulances")
+	Teams = GetCollection("teams", Client)
+	Ambulances = GetCollection("ambulances", Client)
 
-	Hospitals = GetCollection("hospitals")
+	Hospitals = GetCollection("hospitals", Client)
 
-	Events = GetCollection("events")
+	Events = GetCollection("events", Client)
 
 	fmt.Println("Connected to MongoDB")
 	return nil
 }
 
-func GetCollection(collectionName string) *mongo.Collection {
-	return Client.Database("dev").Collection(collectionName)
+func GetCollection(collectionName string, client *mongo.Client) *mongo.Collection {
+	return client.Database("dev").Collection(collectionName)
 }

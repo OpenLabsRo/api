@@ -84,12 +84,12 @@ func AccountMiddleware(c fiber.Ctx) error {
 func (acc *Account) Get(id string) error {
 	return db.Accounts.FindOne(db.Ctx, bson.M{
 		"id": id,
-	}).Decode(&acc)
+	}).Decode(acc)
 
 }
 
 func (acc *Account) GetByPhone(phone string) error {
 	return db.Accounts.FindOne(db.Ctx, bson.M{
 		"phone": phone,
-	}).Decode(&acc)
+	}).Decode(acc)
 }

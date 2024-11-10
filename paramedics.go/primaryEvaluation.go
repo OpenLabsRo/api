@@ -29,7 +29,7 @@ func primaryEvaluation(para fiber.Router) {
 
 		return c.JSON(body)
 
-	}, models.ParamedicMiddleware)
+	})
 
 	primary.Patch("/airways", func(c fiber.Ctx) error {
 		id := c.Query("id")

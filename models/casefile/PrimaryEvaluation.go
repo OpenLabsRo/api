@@ -10,7 +10,7 @@ type MentalStatus struct {
 	Conscious struct {
 		Normal  bool `bson:"normal" json:"normal"`
 		Altered bool `bson:"altered" json:"altered"`
-	}
+	} `bson:"conscious" json:"conscious"`
 	Unconscious bool `bson:"unconscious" json:"unconscious"`
 }
 

@@ -65,4 +65,5 @@ func Endpoints(app *fiber.App) {
 
 	primaryEvaluation(para)
 	secondaryEvaluation(para)
+	procedures(para)
 }

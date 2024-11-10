@@ -2,6 +2,7 @@ package main
 
 import (
 	"api/accounts"
+	"api/db"
 	"api/dispatchers"
 	"api/paramedics.go"
 
@@ -11,7 +12,7 @@ import (
 func main() {
 	app := fiber.New()
 
-	// db.InitDB()
+	db.InitDB()
 
 	app.Get("/ping", func(c fiber.Ctx) error {
 		return c.SendString("PONG\n")
