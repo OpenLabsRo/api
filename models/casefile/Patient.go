@@ -6,7 +6,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-type CasePatient struct {
+type Patient struct {
 	CNP string `bson:"cnp" json:"cnp"`
 
 	FirstName string `bson:"firstName" json:"firstName"`
@@ -24,7 +24,7 @@ type CasePatient struct {
 	Diseases  string `bson:"diseases" json:"diseases"`
 }
 
-func (c *Case) SetPatient(patient CasePatient) (err error) {
+func (c *Case) SetPatient(patient Patient) (err error) {
 	_, err = db.Cases.UpdateOne(db.Ctx, bson.M{
 		"id": c.ID,
 	}, bson.M{

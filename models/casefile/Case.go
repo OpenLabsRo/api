@@ -12,9 +12,9 @@ type Case struct {
 	ID           string `bson:"id" json:"id"`
 	DispatcherID string `bson:"dispatcherID" json:"dispatcherID"`
 
-	Intervention CaseIntervention `bson:"intervention" json:"intervention"`
+	Intervention Intervention `bson:"intervention" json:"intervention"`
 
-	Patient CasePatient `bson:"patient" json:"patient"`
+	Patient Patient `bson:"patient" json:"patient"`
 
 	PrimaryEvaluation   PrimaryEvaluation   `bson:"primaryEvaluation" json:"primaryEvaluation"`
 	SecondaryEvaluation SecondaryEvaluation `bson:"secondaryEvaluation" json:"secondaryEvaluation"`
@@ -32,8 +32,10 @@ func (c *Case) Create(dispatcherID string) (err error) {
 	c.ID = utils.GenID(10)
 	c.DispatcherID = dispatcherID
 
-	c.Patient = CasePatient{}
-	c.Intervention = CaseIntervention{}
+	c.Patient = Patient{}
+	c.Intervention = Intervention{}
+	c.PrimaryEvaluation = PrimaryEvaluation{}
+	c.SecondaryEvaluation = SecondaryEvaluation{}
 
 	c.CreatedAt = time.Now()
 

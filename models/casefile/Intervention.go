@@ -66,7 +66,7 @@ const (
 	Other       CaseSolicitant = "other"
 )
 
-type CaseIntervention struct {
+type Intervention struct {
 	CaseCode           string `bson:"caseCode" json:"caseCode"`
 	ActivationProtocol string `bson:"activationProtocol" json:"activationProtocol"`
 
@@ -91,7 +91,7 @@ type CaseIntervention struct {
 	} `bson:"timeFrames" json:"timeFrames"`
 }
 
-func (c *Case) SetIntervention(intervention CaseIntervention) (err error) {
+func (c *Case) SetIntervention(intervention Intervention) (err error) {
 	_, err = db.Cases.UpdateOne(db.Ctx, bson.M{
 		"id": c.ID,
 	}, bson.M{

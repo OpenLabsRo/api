@@ -12,7 +12,7 @@ import (
 func primaryEvaluation(para fiber.Router) {
 	primary := para.Group("/primary")
 
-	primary.Post("/mental", func(c fiber.Ctx) error {
+	primary.Patch("/mental", func(c fiber.Ctx) error {
 		id := c.Query("id")
 
 		var caseFile casefile.Case
@@ -31,7 +31,7 @@ func primaryEvaluation(para fiber.Router) {
 
 	}, models.ParamedicMiddleware)
 
-	primary.Post("/airways", func(c fiber.Ctx) error {
+	primary.Patch("/airways", func(c fiber.Ctx) error {
 		id := c.Query("id")
 
 		var caseFile casefile.Case
@@ -50,7 +50,7 @@ func primaryEvaluation(para fiber.Router) {
 
 	}, models.ParamedicMiddleware)
 
-	primary.Post("/breathing", func(c fiber.Ctx) error {
+	primary.Patch("/breathing", func(c fiber.Ctx) error {
 		id := c.Query("id")
 
 		var caseFile casefile.Case
@@ -69,7 +69,7 @@ func primaryEvaluation(para fiber.Router) {
 
 	}, models.ParamedicMiddleware)
 
-	primary.Post("/circulation", func(c fiber.Ctx) error {
+	primary.Patch("/circulation", func(c fiber.Ctx) error {
 		id := c.Query("id")
 
 		var caseFile casefile.Case
